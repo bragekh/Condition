@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 6409b3db93ae53d4e90421bcc9f83200
+  - enabled: 1
+    path: Assets/Scenes/OutOfTime.unity
+    guid: d272540c0a8c12346ad46f8b52feed1e
   m_configObjects: {}

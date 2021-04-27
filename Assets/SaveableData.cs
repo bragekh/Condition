@@ -22,6 +22,6 @@ public class SaveableData : MonoBehaviour
 [System.Serializable]
 public class SaveThis {
     public int bananasCollected;
-
+    public int amount;
 }
 

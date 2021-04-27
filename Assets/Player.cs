@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.IO;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
         render = GetComponent<SpriteRenderer>();
 
         SaveableData.SD.data.bananasCollected = 0;
+        SaveableData.SD.data.amount = 0;
     }
     public void FixedUpdate() {
         moveX = Input.GetAxisRaw("Horizontal") * moveSpeed;
@@ -71,11 +72,18 @@ public class Player : MonoBehaviour {
             timerText.text = aliveTimer.ToString("00");
 
             if (aliveTimer <= 0) {
-                string json = File.ReadAllText(Application.dataPath + "/DoNotEditYouLilBitch.json");
-                SaveThis loaded = JsonUtility.FromJson<SaveThis>(json);
+                if (File.Exists(Application.dataPath + "/DoNotEditYouLilBitch.json")){
+
+                    string json = File.ReadAllText(Application.dataPath + "/DoNotEditYouLilBitch.json");
+                 SaveThis loaded = JsonUtility.FromJson<SaveThis>(json);
                 if (loaded.bananasCollected < SaveableData.SD.data.bananasCollected)
                     SaveData.Save(SaveableData.SD.data);
-                SceneManager.LoadScene("GameScene");
+                }
+                else
+                    SaveData.Save(SaveableData.SD.data);
+
+                SaveableData.SD.data.amount = SaveableData.SD.data.bananasCollected;
+                SceneManager.LoadScene("OutOfTime");
             }
 
         }
