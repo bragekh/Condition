@@ -18,7 +18,7 @@ public class OutOfTimeScene : MonoBehaviour
         quit.onClick.AddListener(Quitting);
         retry.onClick.AddListener(Retrying);
         SaveThis loaded = JsonUtility.FromJson<SaveThis>(java);
-        if (loaded.bananasCollected > SaveableData.SD.data.amount)
+        if (SaveableData.SD.data.amount > loaded.bananasCollected)
             newHIghSCORE.gameObject.SetActive(true);
         }
 
