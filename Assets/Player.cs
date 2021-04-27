@@ -1,7 +1,7 @@
-using System.IO;
 using UnityEngine;
+using System.IO;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-    using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     public float moveSpeed;
@@ -25,17 +25,17 @@ public class Player : MonoBehaviour {
     }
     public void FixedUpdate() {
         moveX = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        if(moveX != 0) {
+        if (moveX != 0) {
             anim.SetBool("walk", true);
             if (moveX >= 1) {
                 render.flipX = false;
             }
 
-            if(moveX <= -1) {
+            if (moveX <= -1) {
                 render.flipX = true;
             }
         }
-        else{
+        else {
             anim.SetBool("walk", false);
         }
         rb.velocity = new Vector2(moveX, rb.velocity.y);
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
             rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
         }
 
-        if(!IsGrounded())
+        if (!IsGrounded())
             anim.SetBool("inair", true);
 
         else
@@ -71,7 +71,10 @@ public class Player : MonoBehaviour {
             timerText.text = aliveTimer.ToString("00");
 
             if (aliveTimer <= 0) {
-                SaveData.Save(SaveableData.SD.data);
+                string json = File.ReadAllText(Application.dataPath + "/DoNotEditYouLilBitch.json");
+                SaveThis loaded = JsonUtility.FromJson<SaveThis>(json);
+                if (loaded.bananasCollected < SaveableData.SD.data.bananasCollected)
+                    SaveData.Save(SaveableData.SD.data);
                 SceneManager.LoadScene("GameScene");
             }
 

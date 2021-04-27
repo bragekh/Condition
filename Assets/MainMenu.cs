@@ -11,8 +11,7 @@ public class MainMenu : MonoBehaviour {
         start.onClick.AddListener(IShallPlayThisAbominationOfAGame);
         string json = File.ReadAllText(Application.dataPath + "/DoNotEditYouLilBitch.json");
         SaveThis loaded = JsonUtility.FromJson<SaveThis>(json);
-        SaveableData.SD.data = loaded;
-        highScoreText.text = SaveableData.SD.data.bananasCollected.ToString();
+        highScoreText.text = loaded.bananasCollected.ToString();
     }
     public void Update() {
 
