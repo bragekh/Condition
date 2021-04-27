@@ -6664,9 +6664,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '60
-
-'
+  m_Text: 45
 --- !u!222 &1881451732
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7537,7 +7535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   jumpHeight: 7
-  aliveTimer: 60
+  aliveTimer: 45
   extraHeight: 0.2
   timerText: {fileID: 1881451731}
 --- !u!50 &2005583136
