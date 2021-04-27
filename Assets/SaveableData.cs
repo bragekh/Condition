@@ -5,6 +5,7 @@ using System.IO;
 
 public class SaveableData : MonoBehaviour
 {
+    /*
 <<<<<<< Updated upstream
   public List<GameObject> resetObjects = new List<GameObject>();
     [ContextMenu("Save")]
@@ -24,4 +25,5 @@ public class SaveableData : MonoBehaviour
 =======
     public int bananasCollected;
 >>>>>>> Stashed changes
+*/
 }
