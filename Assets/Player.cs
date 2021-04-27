@@ -10,15 +10,32 @@ public class Player : MonoBehaviour {
     public int calscium;
     private Rigidbody2D rb;
     float moveX, moveY;
+    private Animator anim;
+    private SpriteRenderer render;
 
     public Text timerText;
     private BoxCollider2D boxC;
     private void Start() {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         boxC = GetComponent<BoxCollider2D>();
+        render = GetComponent<SpriteRenderer>();
     }
     public void FixedUpdate() {
         moveX = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        if(moveX != 0) {
+            anim.SetBool("walk", true);
+            if (moveX >= 1) {
+                render.flipX = false;
+            }
+
+            if(moveX <= -1) {
+                render.flipX = true;
+            }
+        }
+        else{
+            anim.SetBool("walk", false);
+        }
         rb.velocity = new Vector2(moveX, rb.velocity.y);
         AliveTimer();
     }
@@ -27,6 +44,13 @@ public class Player : MonoBehaviour {
             SoundManager.SM.PlaySound("JUMP");
             rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
         }
+
+        if(!IsGrounded())
+            anim.SetBool("inair", true);
+
+        else
+            anim.SetBool("inair", false);
+
 
         if (calscium == 10)
             print("You Win!");

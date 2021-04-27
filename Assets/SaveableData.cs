@@ -17,6 +17,7 @@ public class SaveableData : MonoBehaviour
        // FileInfo save;
         foreach (GameObject r in resetObjects) {
           //  r.transform.position = SaveData.LoadSave(save);
+
         }
     }
 }
