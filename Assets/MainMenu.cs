@@ -9,9 +9,12 @@ public class MainMenu : MonoBehaviour {
     public void Start() {
         quit.onClick.AddListener(IShallQuitTheGameYouCretin);
         start.onClick.AddListener(IShallPlayThisAbominationOfAGame);
+        if(File.Exists(Application.dataPath + "/DoNotEditYouLilBitch.json")) {
+
         string json = File.ReadAllText(Application.dataPath + "/DoNotEditYouLilBitch.json");
         SaveThis loaded = JsonUtility.FromJson<SaveThis>(json);
         highScoreText.text = loaded.bananasCollected.ToString();
+        }
     }
     public void Update() {
 
