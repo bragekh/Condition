@@ -14,9 +14,9 @@ public class SaveableData : MonoBehaviour
     }
     [ContextMenu("Load")]
     public void Load() {
-        FileInfo save;
+       // FileInfo save;
         foreach (GameObject r in resetObjects) {
-            r.transform.position = SaveData.LoadSave(save);
+          //  r.transform.position = SaveData.LoadSave(save);
         }
     }
 }

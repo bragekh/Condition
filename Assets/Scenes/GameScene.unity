@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 830056854}
   - component: {fileID: 830056853}
   - component: {fileID: 830056855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - {fileID: 11400000, guid: 1353644164e4c14438fac8f7975b4244, type: 2}
+  - {fileID: 11400000, guid: d05af1d46989c014a80da3cc4baf34b2, type: 2}
   aS: {fileID: 1823741612}
 --- !u!4 &1272431530
 Transform:
@@ -840,6 +841,7 @@ GameObject:
   - component: {fileID: 2005583137}
   - component: {fileID: 2005583136}
   - component: {fileID: 2005583135}
+  - component: {fileID: 2005583138}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -976,3 +978,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2005583138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005583132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14ff317f0be15c43ac4706cc4ad6b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetObjects:
+  - {fileID: 2005583132}
+  - {fileID: 1776013214}

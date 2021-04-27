@@ -13,12 +13,12 @@ public class SoundManager : MonoBehaviour {
     }
     public void PlaySound(string soundType) {
         foreach (Sounds s in sounds) {
-            if (soundType == s.name) {
+            if (soundType == s.soundName) {
 
                 aS.PlayOneShot(s.sound, 1f);
                 print("played " + s.name);
             }
 
         }
-    }
+    }   
 }
