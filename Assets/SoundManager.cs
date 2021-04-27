@@ -6,8 +6,10 @@ public class SoundManager : MonoBehaviour {
     public List<Sounds> sounds = new List<Sounds>();
     public AudioSource aS;
     private void Start() {
-        if (SM == null)
+        if (SM == null) {
             SM = this;
+            DontDestroyOnLoad(this);
+        }
         else
             Destroy(gameObject);
     }

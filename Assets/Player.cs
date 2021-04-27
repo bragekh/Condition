@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
     public float moveSpeed;
     public float jumpHeight;
     public float aliveTimer;
-    public int calscium;
+    public float extraHeight = 0.2f;
     private Rigidbody2D rb;
     float moveX, moveY;
     private Animator anim;
@@ -20,6 +20,8 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         boxC = GetComponent<BoxCollider2D>();
         render = GetComponent<SpriteRenderer>();
+
+        SaveableData.SD.data.bananasCollected = 0;
     }
     public void FixedUpdate() {
         moveX = Input.GetAxisRaw("Horizontal") * moveSpeed;
@@ -51,19 +53,15 @@ public class Player : MonoBehaviour {
         else
             anim.SetBool("inair", false);
 
-
-        if (calscium == 10)
-            print("You Win!");
     }
     public bool IsGrounded() {
-        float height = 0.2f;
-        RaycastHit2D hit = Physics2D.Raycast(boxC.bounds.center, Vector2.down, boxC.bounds.extents.y + height, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(boxC.bounds.center, Vector2.down, boxC.bounds.extents.y + extraHeight, LayerMask.GetMask("Ground"));
         Color raycolor;
         if (hit.collider != null)
             raycolor = Color.green;
         else
             raycolor = Color.red;
-        Debug.DrawRay(boxC.bounds.center, Vector2.down * (boxC.bounds.extents.y + height), raycolor);
+        Debug.DrawRay(boxC.bounds.center, Vector2.down * (boxC.bounds.extents.y + extraHeight), raycolor);
         return hit.collider != null;
     }
     bool timerActive = true;
@@ -73,6 +71,7 @@ public class Player : MonoBehaviour {
             timerText.text = aliveTimer.ToString("00");
 
             if (aliveTimer <= 0) {
+                SaveData.Save(SaveableData.SD.data);
                 SceneManager.LoadScene("GameScene");
             }
 
@@ -83,7 +82,7 @@ public class Player : MonoBehaviour {
         if (other.GetComponent<Collectable>()) {
             SoundManager.SM.PlaySound("COLLECT");
             Destroy(other.gameObject);
-            calscium++;
+            SaveableData.SD.CollectedBanana();
         }
     }
 }

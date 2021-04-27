@@ -2,15 +2,15 @@
 using UnityEngine;
 
 public static class SaveData {
-
-    public static void Save(SaveableData saveData) {
+    public static string saveFolder =>  Application.dataPath + "/DoNotEditYouLilBitch.json";
+    public static void Save(SaveThis saveData) {
         var json = JsonUtility.ToJson(saveData);
-        File.WriteAllText("DoNotEnter" + ".json", json);
+        File.WriteAllText(saveFolder, json);
     }
 
-    public static SaveableData LoadSave(FileInfo file) {
+    public static SaveThis LoadSave(FileInfo file) {
         var json = File.ReadAllText(file.FullName);
-        SaveableData loadedData = JsonUtility.FromJson<SaveableData>(json);
+        SaveThis loadedData = JsonUtility.FromJson<SaveThis>(json);
         return loadedData;
         
     }

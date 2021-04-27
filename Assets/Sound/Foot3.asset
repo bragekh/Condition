@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dba822bcccb71342a3593bfeab028ac, type: 3}
   m_Name: Foot3
   m_EditorClassIdentifier: 
-  soundName: 
-  sound: {fileID: 0}
+  soundName: FOOT3
+  sound: {fileID: 8300000, guid: f9f3c736c1e815d4c89a7faf8122bab9, type: 3}
